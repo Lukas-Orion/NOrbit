@@ -1,6 +1,6 @@
 .. _NOrbit:
 
-_NOrbit Functions
+NOrbit Functions
 =====================
 
 Function to perform N-body simulations.
