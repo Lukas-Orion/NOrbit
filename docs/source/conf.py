@@ -12,14 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../coconv/'))
+sys.path.insert(0, os.path.abspath('../../NOrbit/'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'NOrbit'
-copyright = '2023, Lukas Orion'
-author = 'Lukas Orion'
+copyright = '2023, Lukas Orion & Jim Buisman'
+author = 'Lukas Orion & Jim Buisman'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'
