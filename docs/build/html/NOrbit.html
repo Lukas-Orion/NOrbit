@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>_NOrbit Functions &mdash; NOrbit 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to NOrbit’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            NOrbit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">_NOrbit Functions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NOrbit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">_NOrbit Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/NOrbit.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="norbit-functions">
+<span id="norbit"></span><h1>_NOrbit Functions<a class="headerlink" href="#norbit-functions" title="Permalink to this headline">¶</a></h1>
+<p>Function to perform N-body simulations.</p>
+<span class="target" id="module-NOrbit"></span><dl class="py function">
+<dt id="NOrbit.calculate_acceleration">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_acceleration" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the accelerations of the objects involved in the N-body problem</p>
+<p>Args:
+positions (numpy.array) – positions of the objects
+masses (numpy.array) – masses of the objects</p>
+<p>Returns:
+acceleration (numpy.array) – accelerations of the object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.calculate_derivatives">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_derivatives</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_derivatives" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the derivative quantities of the objects involved in the N-body problem</p>
+<p>Args:
+state (numpy.array) – states of the objects (positions, velocities)
+masses (numpy.array) – masses of the objects</p>
+<p>Returns:
+(numpy.array) – derivative quantities of the object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.move_to_barycenter">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">move_to_barycenter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">velocities</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.move_to_barycenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function corrects the positions of the objects involved in the N-body problem to barycenter positions</p>
+<p>Args:
+positions (numpy.array) – positions of the objects
+velocities (numpy.array) – velocities of the objects
+masses (numpy.array) – masses of the objects</p>
+<p>Returns:
+positions (numpy.array) – barycenter corrected positions of the objects
+velocities (numpy.array) – barycenter corrected velocities of the objects</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.orbit">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">orbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">planet_elements</span></em>, <em class="sig-param"><span class="n">M_star</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">n_orbits</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the orbit of the objects involved in the N-body problem</p>
+<p>Args:
+planet_elements (numpy.array) – planetary elements
+M_star (float) – mass of the star
+dt (float) – time-step of the integration
+n_orbits (int) – number of first planet orbits around the star</p>
+<p>Returns:
+positions (numpy.array) – orbital positions of the objects
+velocities (numpy.array) – orbital velocities of the objects</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.rk4_n_body">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">rk4_n_body</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_step</span></em>, <em class="sig-param"><span class="n">num_steps</span></em>, <em class="sig-param"><span class="n">initial_positions</span></em>, <em class="sig-param"><span class="n">initial_velocities</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.rk4_n_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the Runge-Kutta 4th order scheme of the objects involved in the N-body problem</p>
+<p>Args:
+time_step (float) – time-step of the integration
+num_steps (int) – number of steps of the integration
+initial_positions (numpy.array) – initial positions of the objects
+initial_velocities (numpy.array) – initial velocities of the objects
+masses (numpy.array) – masses of the objects</p>
+<p>Returns:
+positions (numpy.array) – positions of the objects after the integration
+velocities (numpy.array) – velocities of the objects after the integration</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to NOrbit’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lukas Orion &amp; Jim Buisman.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
