@@ -170,11 +170,11 @@ def calculate_acceleration(positions, masses):
     This function calculates the accelerations of the objects involved in the N-body problem
     
     Args:
-    positions (numpy.array) -- positions of the objects
-    masses (numpy.array) -- masses of the objects
+        positions (numpy.array): positions of the objects
+        masses (numpy.array): masses of the objects
     
     Returns:
-    acceleration (numpy.array) -- accelerations of the object
+        numpy.array: accelerations of the object
     """
     k = 0.01720209895
     G = k * k
@@ -192,11 +192,11 @@ def calculate_derivatives(state, masses):
     This function calculates the derivative quantities of the objects involved in the N-body problem
     
     Args:
-    state (numpy.array) -- states of the objects (positions, velocities)
-    masses (numpy.array) -- masses of the objects
+        state (numpy.array): states of the objects (positions, velocities)
+        masses (numpy.array): masses of the objects
     
     Returns:
-    (numpy.array) -- derivative quantities of the object
+        numpy.array: derivative quantities of the object
     """
     num_bodies = len(masses)
     positions = state[:num_bodies]
@@ -209,13 +209,14 @@ def move_to_barycenter(positions, velocities, masses):
     This function corrects the positions of the objects involved in the N-body problem to barycenter positions
     
     Args:
-    positions (numpy.array) -- positions of the objects
-    velocities (numpy.array) -- velocities of the objects
-    masses (numpy.array) -- masses of the objects
+        positions (numpy.array): positions of the objects
+        velocities (numpy.array): velocities of the objects
+        masses (numpy.array): masses of the objects
     
     Returns:
-    positions (numpy.array) -- barycenter corrected positions of the objects
-    velocities (numpy.array) -- barycenter corrected velocities of the objects
+        (tuple): tuple containing:
+            positions (numpy.array): barycenter corrected positions of the objects
+            velocities (numpy.array): barycenter corrected velocities of the objects
     """
     total_mass = np.sum(masses)
     barycenter = np.sum(positions * masses[:, np.newaxis], axis = 0)/total_mass
@@ -228,15 +229,16 @@ def rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, mass
     This function calculates the Runge-Kutta 4th order scheme of the objects involved in the N-body problem
     
     Args:
-    time_step (float) -- time-step of the integration
-    num_steps (int) -- number of steps of the integration
-    initial_positions (numpy.array) -- initial positions of the objects
-    initial_velocities (numpy.array) -- initial velocities of the objects
-    masses (numpy.array) -- masses of the objects
+        time_step (float): time-step of the integration
+        num_steps (int): number of steps of the integration
+        initial_positions (numpy.array): initial positions of the objects
+        initial_velocities (numpy.array): initial velocities of the objects
+        masses (numpy.array): masses of the objects
     
     Returns:
-    positions (numpy.array) -- positions of the objects after the integration
-    velocities (numpy.array) -- velocities of the objects after the integration
+        (tuple): tuple containing:
+            positions (numpy.array): positions of the objects after the integration
+            velocities (numpy.array): velocities of the objects after the integration
     """
     num_bodies = len(masses)
     state = np.zeros((num_steps + 1, 2 * num_bodies, 3))
@@ -264,14 +266,15 @@ def orbit(planet_elements, M_star, dt, n_orbits):
     This function calculates the orbit of the objects involved in the N-body problem
     
     Args:
-    planet_elements (numpy.array) -- planetary elements
-    M_star (float) -- mass of the star
-    dt (float) -- time-step of the integration
-    n_orbits (int) -- number of first planet orbits around the star
+        planet_elements (numpy.array): planetary elements
+        M_star (float): mass of the star
+        dt (float): time-step of the integration
+        n_orbits (int): number of first planet orbits around the star
     
     Returns:
-    positions (numpy.array) -- orbital positions of the objects
-    velocities (numpy.array) -- orbital velocities of the objects
+        (tuple): tuple containing:
+            positions (numpy.array): orbital positions of the objects
+            velocities (numpy.array): orbital velocities of the objects
     """
     k = 0.01720209895
     G = k * k
