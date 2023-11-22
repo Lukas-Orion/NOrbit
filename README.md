@@ -2,9 +2,10 @@
 N-body integrator
 
 ## Basics
+### before working
 git fetch\
 git pull origin
-
+### after working
 git add . \
 git commit -m 'Commit Message' \
 git push
