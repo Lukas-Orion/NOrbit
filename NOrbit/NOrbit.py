@@ -2,6 +2,18 @@ import numpy as np
 
 k = 0.01720209895
 def kepToCart(kepler, m0):
+    """
+    This function transforms an objects kepler coordinates to cartesian coordinates
+    
+    Args:
+        kepler (numpy.array): orbital elements of the object
+        m0 (float): mass of the star
+    
+    Returns:
+        (tuple): tuple containing:
+            pos (numpy.array): transformed cartesian position of the object
+            vel (numpy.array): transformed cartesian velocity of the object
+    """
 
     k2 = np.square(0.01720209895)
     igrad = 180/np.pi
@@ -41,6 +53,18 @@ def kepToCart(kepler, m0):
 
 #def cartToKep(x1,v1,x0,v0,m0,m1):
 def cartToKep(x1,v1,m0,m1):
+    """
+    This function transforms an objects cartesian coordinates to kepler coordinates
+    
+    Args:
+        x1 (numpy.array): position of the object in cartesian coordinates
+        v1 (numpy.array): velocity of the object in cartesian coordinates
+        m0 (float): mass of the star
+        m1 (float): mass of the object
+    
+    Returns:
+        numpy.array: orbital elements of the object
+    """
 
     k2 = np.square(k)
     igrad = 180/np.pi
