@@ -11,7 +11,6 @@ git commit -m 'Commit Message' \
 git push
 
 ## To-Do
-Google Docstring for concov functions \
 Ask Prash about google docstring return functions 
 
 add a if __name__ == __main__ \
