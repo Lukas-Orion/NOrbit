@@ -198,7 +198,7 @@ def calculate_acceleration(positions, masses):
         masses (numpy.array): masses of the objects
     
     Returns:
-        numpy.array: accelerations of the object
+        numpy.array: accelerations of the objects
     """
     k = 0.01720209895
     G = k * k
@@ -220,7 +220,7 @@ def calculate_derivatives(state, masses):
         masses (numpy.array): masses of the objects
     
     Returns:
-        numpy.array: derivative quantities of the object
+        numpy.array: derivative quantities of the objects
     """
     num_bodies = len(masses)
     positions = state[:num_bodies]
