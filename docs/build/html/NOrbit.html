@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOrbit Functions &mdash; NOrbit 1.0.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>NOrbit Functions &mdash; NOrbit 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,16 +38,9 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">NOrbit Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#NOrbit.calculate_acceleration"><code class="docutils literal notranslate"><span class="pre">calculate_acceleration()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NOrbit.calculate_derivatives"><code class="docutils literal notranslate"><span class="pre">calculate_derivatives()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NOrbit.move_to_barycenter"><code class="docutils literal notranslate"><span class="pre">move_to_barycenter()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NOrbit.orbit"><code class="docutils literal notranslate"><span class="pre">orbit()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#NOrbit.rk4_n_body"><code class="docutils literal notranslate"><span class="pre">rk4_n_body()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NOrbit Functions</a></li>
 </ul>
 
         </div>
@@ -77,62 +67,109 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="norbit-functions">
-<span id="norbit"></span><h1>NOrbit Functions<a class="headerlink" href="#norbit-functions" title="Link to this heading"></a></h1>
+  <div class="section" id="norbit-functions">
+<span id="norbit"></span><h1>NOrbit Functions<a class="headerlink" href="#norbit-functions" title="Permalink to this headline">¶</a></h1>
 <p>Function to perform N-body simulations.</p>
-<dl class="py function" id="module-NOrbit">
-<dt class="sig sig-object py" id="NOrbit.calculate_acceleration">
-<span class="sig-prename descclassname"><span class="pre">NOrbit.</span></span><span class="sig-name descname"><span class="pre">calculate_acceleration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_acceleration" title="Link to this definition"></a></dt>
+<span class="target" id="module-NOrbit"></span><dl class="py function">
+<dt id="NOrbit.calculate_acceleration">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_acceleration" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the accelerations of the objects involved in the N-body problem</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of the objects</p></li>
 <li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>accelerations of the object</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>accelerations of the objects</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="NOrbit.calculate_derivatives">
-<span class="sig-prename descclassname"><span class="pre">NOrbit.</span></span><span class="sig-name descname"><span class="pre">calculate_derivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_derivatives" title="Link to this definition"></a></dt>
+<dt id="NOrbit.calculate_derivatives">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_derivatives</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_derivatives" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the derivative quantities of the objects involved in the N-body problem</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>state</strong> (<em>numpy.array</em>) – states of the objects (positions, velocities)</p></li>
 <li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>derivative quantities of the object</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>derivative quantities of the objects</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="NOrbit.move_to_barycenter">
-<span class="sig-prename descclassname"><span class="pre">NOrbit.</span></span><span class="sig-name descname"><span class="pre">move_to_barycenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.move_to_barycenter" title="Link to this definition"></a></dt>
+<dt id="NOrbit.cartToKep">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">cartToKep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x1</span></em>, <em class="sig-param"><span class="n">v1</span></em>, <em class="sig-param"><span class="n">m0</span></em>, <em class="sig-param"><span class="n">m1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.cartToKep" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms an objects cartesian coordinates to kepler coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>numpy.array</em>) – position of the object in cartesian coordinates</p></li>
+<li><p><strong>v1</strong> (<em>numpy.array</em>) – velocity of the object in cartesian coordinates</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – mass of the star</p></li>
+<li><p><strong>m1</strong> (<em>float</em>) – mass of the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>orbital elements of the object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.kepToCart">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">kepToCart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">kepler</span></em>, <em class="sig-param"><span class="n">m0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.kepToCart" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms an objects kepler coordinates to cartesian coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kepler</strong> (<em>numpy.array</em>) – orbital elements of the object</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – mass of the star</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>pos (numpy.array): transformed cartesian position of the object
+vel (numpy.array): transformed cartesian velocity of the object</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="NOrbit.move_to_barycenter">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">move_to_barycenter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">velocities</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.move_to_barycenter" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function corrects the positions of the objects involved in the N-body problem to barycenter positions</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of the objects</p></li>
 <li><p><strong>velocities</strong> (<em>numpy.array</em>) – velocities of the objects</p></li>
 <li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
 <dt>tuple containing:</dt><dd><p>positions (numpy.array): barycenter corrected positions of the objects
 velocities (numpy.array): barycenter corrected velocities of the objects</p>
@@ -140,18 +177,18 @@ velocities (numpy.array): barycenter corrected velocities of the objects</p>
 </dl>
 </p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>(tuple)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="NOrbit.orbit">
-<span class="sig-prename descclassname"><span class="pre">NOrbit.</span></span><span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">planet_elements</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M_star</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_orbits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.orbit" title="Link to this definition"></a></dt>
+<dt id="NOrbit.orbit">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">orbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">planet_elements</span></em>, <em class="sig-param"><span class="n">M_star</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">n_orbits</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the orbit of the objects involved in the N-body problem</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>planet_elements</strong> (<em>numpy.array</em>) – planetary elements</p></li>
 <li><p><strong>M_star</strong> (<em>float</em>) – mass of the star</p></li>
@@ -159,7 +196,7 @@ velocities (numpy.array): barycenter corrected velocities of the objects</p>
 <li><p><strong>n_orbits</strong> (<em>int</em>) – number of first planet orbits around the star</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
 <dt>tuple containing:</dt><dd><p>positions (numpy.array): orbital positions of the objects
 velocities (numpy.array): orbital velocities of the objects</p>
@@ -167,18 +204,18 @@ velocities (numpy.array): orbital velocities of the objects</p>
 </dl>
 </p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>(tuple)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="NOrbit.rk4_n_body">
-<span class="sig-prename descclassname"><span class="pre">NOrbit.</span></span><span class="sig-name descname"><span class="pre">rk4_n_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_positions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_velocities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.rk4_n_body" title="Link to this definition"></a></dt>
+<dt id="NOrbit.rk4_n_body">
+<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">rk4_n_body</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_step</span></em>, <em class="sig-param"><span class="n">num_steps</span></em>, <em class="sig-param"><span class="n">initial_positions</span></em>, <em class="sig-param"><span class="n">initial_velocities</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.rk4_n_body" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the Runge-Kutta 4th order scheme of the objects involved in the N-body problem</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time_step</strong> (<em>float</em>) – time-step of the integration</p></li>
 <li><p><strong>num_steps</strong> (<em>int</em>) – number of steps of the integration</p></li>
@@ -187,7 +224,7 @@ velocities (numpy.array): orbital velocities of the objects</p>
 <li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
 <dt>tuple containing:</dt><dd><p>positions (numpy.array): positions of the objects after the integration
 velocities (numpy.array): velocities of the objects after the integration</p>
@@ -195,13 +232,13 @@ velocities (numpy.array): velocities of the objects after the integration</p>
 </dl>
 </p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>(tuple)</p>
 </dd>
 </dl>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>
