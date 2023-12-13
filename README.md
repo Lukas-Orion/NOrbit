@@ -9,6 +9,10 @@ git pull origin
 git add . \
 git commit -m 'Commit Message' \
 git push
+### overwriting local changes
+git fetch --all
+git branch backup
+git reset --hard origin
 
 ## To-Do
 Ask Prash about google docstring return functions 
