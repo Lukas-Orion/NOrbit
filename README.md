@@ -18,9 +18,12 @@ git reset --hard origin
 Ask Prash about google docstring return functions 
 
 add a if __name__ == __main__ \
-typing for checking the input type \
-PyPi 
+typing for checking the input type (pydantic) \
+PyPi \
+Pull requests! 
+
 ### Edit and test Example Notebook 
  - import functions directly from NOrbit (without redefining it) 
 
-Edit the README
+Edit the README 
+### Check Assessment Criteria
