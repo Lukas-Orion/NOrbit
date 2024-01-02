@@ -23,7 +23,8 @@ PyPi \
 Pull requests! 
 
 ### Edit and test Example Notebook 
- - import functions directly from NOrbit (without redefining it) 
+ - import functions directly from NOrbit (without redefining it)
+ - maybe add solar system bodies as preset? (so you can just type eg. NOrbit.earth or NOrbit.bodies / objects)
 
 Edit the README 
 ### Check Assessment Criteria
