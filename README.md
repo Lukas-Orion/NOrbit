@@ -13,6 +13,14 @@ git push
 git fetch --all \
 git branch backup \
 git reset --hard origin
+### Pull request
+git checkout -b new-branch \
+*make changes* \
+git add . \
+git commit -m 'Commit Message' \
+git push origin new-branch \
+*create pull request* \
+*merge pull request*
 
 ## To-Do
 Ask Prash about google docstring return functions 
