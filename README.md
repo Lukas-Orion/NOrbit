@@ -21,14 +21,21 @@ git commit -m 'Commit Message' \
 git push origin new-branch \
 *create pull request* \
 *merge pull request*
+### Change Branch
+git checkout branch-name
 
 ## To-Do
 Ask Prash about google docstring return functions 
 
 add a if __name__ == __main__ \
 typing for checking the input type (pydantic) \
-PyPi \
 Pull requests! 
+
+### Update PyPi 
+ - Delete all files in the dist folder
+ - Update the version number
+ - python -m build
+ - python -m twine upload -p "<your_password>" dist/*
 
 ### Edit and test Example Notebook 
  - import functions directly from NOrbit (without redefining it)
