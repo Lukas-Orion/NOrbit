@@ -347,14 +347,3 @@ class NOrbit(BaseModel):
         # Runge-Kutta 4
         positions, velocities = rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, masses)
         return positions, velocities
-
-
-planets = [[np.array([1.000000e+00, 1.670000e-02, 1.000000e-04, -1.126060e+01, 1.029472e+02, 1.004644e+02, 3.039000e-06])],
-    [np.array([5.203400e+00, 4.840000e-02, 1.305300e+00, 1.005562e+02, 1.475390e+01, 3.440440e+01, 9.542000e-04])]]
-
-M_sun = 1.0
-dt = 0.5
-n_orbits = 1
-
-Result = NOrbit(planet_elements = planets, M_star = M_sun, dt = dt, n_orbits = n_orbits).orbit()
-print(Result)
