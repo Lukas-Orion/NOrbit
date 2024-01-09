@@ -1,4 +1,5 @@
 import numpy as np
+from pydantic import BaseModel
 
 k = 0.01720209895
 def kepToCart(kepler, m0):
@@ -285,54 +286,64 @@ def rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, mass
     velocities = state[:, num_bodies:]
     return positions, velocities
 
-def orbit(planet_elements, M_star, dt, n_orbits):
+
+class NOrbit(BaseModel):
     """
-    This function calculates the orbit of the objects involved in the N-body problem
-    
-    Args:
-        planet_elements (numpy.array): planetary elements
-        M_star (float): mass of the star
-        dt (float): time-step of the integration
-        n_orbits (int): number of first planet orbits around the star
-    
-    Returns:
-        (tuple): tuple containing:
-            positions (numpy.array): orbital positions of the objects
-            velocities (numpy.array): orbital velocities of the objects
+    Class for keeping track of NOrbit functions
     """
-    k = 0.01720209895
-    G = k * k
-   
-    # Kepler
-    star = np.array((0, 0, 0, 0, 0, 0, M_star))
-    n_planets = len(planet_elements)
-   
-    positions = [np.array([0, 0, 0])]
-    velocities = [np.array([0, 0, 0])]
-    mass = [M_star]
-   
-    # Cartesian
-    for i in range(0, n_planets):
-        pos = kepToCart(planet_elements[i][0], M_star)[0]
-        vel = kepToCart(planet_elements[i][0], M_star)[1]
+    planet_elements: list
+    M_star: float
+    dt: float
+    n_orbits: int
 
-        positions.append(pos)
-        velocities.append(vel)
-        mass.append(planet_elements[i][0][-1])
-       
-    # Set initial positions and velocities for the Sun and Planets
-    initial_positions =  np.array(positions)
-    initial_velocities = np.array(velocities)
-    masses = np.array(mass)
+    def orbit(self) -> tuple:
+        """
+        This function calculates the orbit of the objects involved in the N-body problem
+    
+        Args:
+            planet_elements (numpy.array): planetary elements
+            M_star (float): mass of the star
+            dt (float): time-step of the integration
+            n_orbits (int): number of first planet orbits around the star
+    
+        Returns:
+            (tuple): tuple containing:
+                positions (numpy.array): orbital positions of the objects
+                velocities (numpy.array): orbital velocities of the objects
+        """
+    
+        k = 0.01720209895
+        G = k * k
 
-    # calculate the number of steps of one single orbit
-    a_planet = planet_elements[0][0][0]
-    M_planet = planet_elements[0][0][-1]
-    T = 2 * np.pi * np.sqrt(a_planet**3/G * (M_star + M_planet))
-    time_step = T * dt  # time step
-    num_steps = int(n_orbits/dt)
-   
-    # Runge-Kutta 4
-    positions, velocities = rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, masses)
-    return positions, velocities
+        # Kepler
+        star = np.array((0, 0, 0, 0, 0, 0, self.M_star))
+        n_planets = len(self.planet_elements)
 
+        positions = [np.array([0, 0, 0])]
+        velocities = [np.array([0, 0, 0])]
+        mass = [self.M_star]
+
+        # Cartesian
+        for i in range(0, n_planets):
+            pos = kepToCart(self.planet_elements[i][0], self.M_star)[0]
+            vel = kepToCart(self.planet_elements[i][0], self.M_star)[1]
+
+            positions.append(pos)
+            velocities.append(vel)
+            mass.append(self.planet_elements[i][0][-1])
+
+        # Set initial positions and velocities for the Sun and Planets
+        initial_positions =  np.array(positions)
+        initial_velocities = np.array(velocities)
+        masses = np.array(mass)
+
+        # calculate the number of steps of one single orbit
+        a_planet = self.planet_elements[0][0][0]
+        M_planet = self.planet_elements[0][0][-1]
+        T = 2 * np.pi * np.sqrt(a_planet**3/G * (self.M_star + M_planet))
+        time_step = T * self.dt  # time step
+        num_steps = int(self.n_orbits/self.dt)
+
+        # Runge-Kutta 4
+        positions, velocities = rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, masses)
+        return positions, velocities
