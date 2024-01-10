@@ -25,10 +25,9 @@ git push origin new-branch \
 git checkout branch-name
 
 ## To-Do
-Ask Prash about google docstring return functions 
+check html \
+check if works directly from PyPi
 
-add a if __name__ == __main__ \
-typing for checking the input type (pydantic) \
 Pull requests! 
 
 ### Update PyPi 
@@ -38,7 +37,6 @@ Pull requests!
  - python -m twine upload -p "<your_password>" dist/*
 
 ### Edit and test Example Notebook 
- - import functions directly from NOrbit (without redefining it)
  - maybe add solar system bodies as preset? (so you can just type eg. NOrbit.earth or NOrbit.bodies / objects)
 
 Edit the README 
