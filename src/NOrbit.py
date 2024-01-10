@@ -4,7 +4,7 @@ from pydantic import BaseModel
 k = 0.01720209895
 def kepToCart(kepler, m0):
     """
-    This function transforms an objects kepler coordinates to cartesian coordinates
+    This function transforms an objects kepler coordinates to cartesian coordinates provided by Max Zimmermann
     
     Args:
         kepler (numpy.array): orbital elements of the object
@@ -55,7 +55,7 @@ def kepToCart(kepler, m0):
 #def cartToKep(x1,v1,x0,v0,m0,m1):
 def cartToKep(x1,v1,m0,m1):
     """
-    This function transforms an objects cartesian coordinates to kepler coordinates
+    This function transforms an objects cartesian coordinates to kepler coordinates provided by Max Zimmermann
     
     Args:
         x1 (numpy.array): position of the object in cartesian coordinates
@@ -292,17 +292,15 @@ class NOrbit(BaseModel):
     Class for keeping track of NOrbit functions
     """
     planet_elements: list
-    M_star: float
-    dt: float
-    n_orbits: int
+    m_star: float
 
-    def orbit(self) -> tuple:
+    def orbit(self, dt: float, n_orbits: int) -> tuple:
         """
         This function calculates the orbit of the objects involved in the N-body problem
     
         Args:
             planet_elements (numpy.array): planetary elements
-            M_star (float): mass of the star
+            m_star (float): mass of the star
             dt (float): time-step of the integration
             n_orbits (int): number of first planet orbits around the star
     
@@ -311,22 +309,22 @@ class NOrbit(BaseModel):
                 positions (numpy.array): orbital positions of the objects
                 velocities (numpy.array): orbital velocities of the objects
         """
-    
+        
         k = 0.01720209895
         G = k * k
 
         # Kepler
-        star = np.array((0, 0, 0, 0, 0, 0, self.M_star))
+        star = np.array((0, 0, 0, 0, 0, 0, self.m_star))
         n_planets = len(self.planet_elements)
 
         positions = [np.array([0, 0, 0])]
         velocities = [np.array([0, 0, 0])]
-        mass = [self.M_star]
+        mass = [self.m_star]
 
         # Cartesian
         for i in range(0, n_planets):
-            pos = kepToCart(self.planet_elements[i][0], self.M_star)[0]
-            vel = kepToCart(self.planet_elements[i][0], self.M_star)[1]
+            pos = kepToCart(self.planet_elements[i][0], self.m_star)[0]
+            vel = kepToCart(self.planet_elements[i][0], self.m_star)[1]
 
             positions.append(pos)
             velocities.append(vel)
@@ -340,9 +338,9 @@ class NOrbit(BaseModel):
         # calculate the number of steps of one single orbit
         a_planet = self.planet_elements[0][0][0]
         M_planet = self.planet_elements[0][0][-1]
-        T = 2 * np.pi * np.sqrt(a_planet**3/G * (self.M_star + M_planet))
-        time_step = T * self.dt  # time step
-        num_steps = int(self.n_orbits/self.dt)
+        T = 2 * np.pi * np.sqrt(a_planet**3/G * (self.m_star + M_planet))
+        time_step = T * dt  # time step
+        num_steps = int(n_orbits/dt)
 
         # Runge-Kutta 4
         positions, velocities = rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, masses)

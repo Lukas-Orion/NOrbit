@@ -1,5 +1,5 @@
 import sys
-path = "NOrbit"
+path = "src"
 sys.path.append(path)
 
 import numpy as np
@@ -123,11 +123,11 @@ def test_orbit():
                1.029472e+02, 1.004644e+02, 3.039000e-06])],
     [np.array([5.203400e+00, 4.840000e-02, 1.305300e+00, 1.005562e+02,
                1.475390e+01, 3.440440e+01, 9.542000e-04])] ]
-    M_star = 1.0
+    m_star = 1.0
     dt = 0.5
     n_orbits = 1
     
-    result = NOrbit.NOrbit(planet_elements = planet_elements, M_star = M_star, dt = dt, n_orbits = n_orbits).orbit()
+    result = NOrbit.NOrbit(planet_elements = planet_elements, m_star = m_star).orbit(dt = dt, n_orbits = n_orbits)
     
     pos = np.array([[[4.24986205e-03, -2.16147702e-03, -7.22871314e-05],
                           [-9.69141616e-01, -2.45313757e-01, -7.05363499e-05],

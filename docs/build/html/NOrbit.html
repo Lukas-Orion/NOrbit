@@ -70,7 +70,40 @@
   <div class="section" id="norbit-functions">
 <span id="norbit"></span><h1>NOrbit Functions<a class="headerlink" href="#norbit-functions" title="Permalink to this headline">¶</a></h1>
 <p>Function to perform N-body simulations.</p>
-<span class="target" id="module-NOrbit"></span><dl class="py function">
+<span class="target" id="module-NOrbit"></span><dl class="py class">
+<dt id="NOrbit.NOrbit">
+<em class="property">class </em><code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">NOrbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.NOrbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for keeping track of NOrbit functions</p>
+<dl class="py method">
+<dt id="NOrbit.NOrbit.orbit">
+<code class="sig-name descname">orbit</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#NOrbit.NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the orbit of the objects involved in the N-body problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>planet_elements</strong> (<em>numpy.array</em>) – planetary elements</p></li>
+<li><p><strong>M_star</strong> (<em>float</em>) – mass of the star</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – time-step of the integration</p></li>
+<li><p><strong>n_orbits</strong> (<em>int</em>) – number of first planet orbits around the star</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>positions (numpy.array): orbital positions of the objects
+velocities (numpy.array): orbital velocities of the objects</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
 <dt id="NOrbit.calculate_acceleration">
 <code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_acceleration" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the accelerations of the objects involved in the N-body problem</p>
@@ -173,33 +206,6 @@ vel (numpy.array): transformed cartesian velocity of the object</p>
 <dd class="field-even"><p><dl class="simple">
 <dt>tuple containing:</dt><dd><p>positions (numpy.array): barycenter corrected positions of the objects
 velocities (numpy.array): barycenter corrected velocities of the objects</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>(tuple)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="NOrbit.orbit">
-<code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">orbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">planet_elements</span></em>, <em class="sig-param"><span class="n">M_star</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">n_orbits</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function calculates the orbit of the objects involved in the N-body problem</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>planet_elements</strong> (<em>numpy.array</em>) – planetary elements</p></li>
-<li><p><strong>M_star</strong> (<em>float</em>) – mass of the star</p></li>
-<li><p><strong>dt</strong> (<em>float</em>) – time-step of the integration</p></li>
-<li><p><strong>n_orbits</strong> (<em>int</em>) – number of first planet orbits around the star</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>positions (numpy.array): orbital positions of the objects
-velocities (numpy.array): orbital velocities of the objects</p>
 </dd>
 </dl>
 </p>
