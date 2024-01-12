@@ -345,3 +345,23 @@ class NOrbit(BaseModel):
         # Runge-Kutta 4
         positions, velocities = rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, masses)
         return positions, velocities
+
+
+class Object():
+    """
+    Class that makes planets of the solar system available for simple import
+    """
+    mercury = [np.array((0.3871, 0.2056, 7.0049, 48.3317, 77.4565, 252.2508, 1.659e-7))]
+    venus = [np.array((0.7233, 0.0068, 3.3947, 76.6807, 131.5330, 181.9797, 2.447e-6))]
+    earth = [np.array((1.0, 0.0167, 0.0001, -11.2606, 102.9472, 100.4644, 3.039e-6))]
+    mars = [np.array((1.5237, 0.0934, 1.8506, 49.5785, 336.0408, 355.4533, 3.226e-7))]
+    jupiter = [np.array((5.2034, 0.0484, 1.3053, 100.5562, 14.7539, 34.4044, 9.542e-4))]
+    saturn = [np.array((9.5371, 0.0542, 2.4845, 113.7150, 92.4319, 49.9443, 2.857e-4))]
+    uranus = [np.array((19.1913, 0.0472, 0.7699, 74.2299, 170.9642, 313.2322, 4.353e-5))]
+    neptune = [np.array((30.0690, 0.0086, 1.7692, 131.7217, 44.9714, 304.8800, 5.165e-5))]
+    planets_solar_system = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+    planets_solar_system_names = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    planets_inner_solar_system = [mercury, venus, earth, mars]
+    planets_inner_solar_system_names = ["Mercury", "Venus", "Earth", "Mars"]
+    planets_outer_solar_system = [jupiter, saturn, uranus, neptune]
+    planets_outer_solar_system_names = ["Jupiter", "Saturn", "Uranus", "Neptune"]
