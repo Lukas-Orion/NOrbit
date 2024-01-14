@@ -73,24 +73,24 @@
 <span class="target" id="module-NOrbit"></span><dl class="py class">
 <dt id="NOrbit.NOrbit">
 <em class="property">class </em><code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">NOrbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.NOrbit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for keeping track of NOrbit functions</p>
+<dd><p>Class that keeps track of NOrbit functions</p>
 <dl class="py method">
 <dt id="NOrbit.NOrbit.orbit">
-<code class="sig-name descname">orbit</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#NOrbit.NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">orbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">n_orbits</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#NOrbit.NOrbit.orbit" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function calculates the orbit of the objects involved in the N-body problem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>planet_elements</strong> (<em>numpy.array</em>) – planetary elements</p></li>
-<li><p><strong>M_star</strong> (<em>float</em>) – mass of the star</p></li>
-<li><p><strong>dt</strong> (<em>float</em>) – time-step of the integration</p></li>
-<li><p><strong>n_orbits</strong> (<em>int</em>) – number of first planet orbits around the star</p></li>
+<li><p><strong>object_elements</strong> (<em>numpy.array</em>) – orbital elements and mass of objects (e.g. planets)</p></li>
+<li><p><strong>m_primary</strong> (<em>float</em>) – mass of primary object (e.g. star) in solar masses</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – time-step of integration</p></li>
+<li><p><strong>n_orbits</strong> (<em>int</em>) – number of total orbits of first object around primary object</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>positions (numpy.array): orbital positions of the objects
-velocities (numpy.array): orbital velocities of the objects</p>
+<dt>tuple containing:</dt><dd><p>positions (numpy.array): orbital positions of objects
+velocities (numpy.array): orbital velocities of objects</p>
 </dd>
 </dl>
 </p>
@@ -103,6 +103,12 @@ velocities (numpy.array): orbital velocities of the objects</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="NOrbit.Object">
+<em class="property">class </em><code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">Object</code><a class="headerlink" href="#NOrbit.Object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that makes objects of the solar system available for simple import</p>
+</dd></dl>
+
 <dl class="py function">
 <dt id="NOrbit.calculate_acceleration">
 <code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">calculate_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">masses</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.calculate_acceleration" title="Permalink to this definition">¶</a></dt>
@@ -110,12 +116,12 @@ velocities (numpy.array): orbital velocities of the objects</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of the objects</p></li>
-<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
+<li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of objects</p></li>
+<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of objects</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>accelerations of the objects</p>
+<dd class="field-even"><p>accelerations of objects</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
@@ -130,12 +136,12 @@ velocities (numpy.array): orbital velocities of the objects</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>state</strong> (<em>numpy.array</em>) – states of the objects (positions, velocities)</p></li>
-<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
+<li><p><strong>state</strong> (<em>numpy.array</em>) – states of objects (positions, velocities)</p></li>
+<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of objects</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>derivative quantities of the objects</p>
+<dd class="field-even"><p>derivative quantities of objects</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
@@ -146,18 +152,18 @@ velocities (numpy.array): orbital velocities of the objects</p>
 <dl class="py function">
 <dt id="NOrbit.cartToKep">
 <code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">cartToKep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x1</span></em>, <em class="sig-param"><span class="n">v1</span></em>, <em class="sig-param"><span class="n">m0</span></em>, <em class="sig-param"><span class="n">m1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.cartToKep" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function transforms an objects cartesian coordinates to kepler coordinates</p>
+<dd><p>This function transforms an objects cartesian coordinates to kepler coordinates provided by Max Zimmermann</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x1</strong> (<em>numpy.array</em>) – position of the object in cartesian coordinates</p></li>
-<li><p><strong>v1</strong> (<em>numpy.array</em>) – velocity of the object in cartesian coordinates</p></li>
-<li><p><strong>m0</strong> (<em>float</em>) – mass of the star</p></li>
-<li><p><strong>m1</strong> (<em>float</em>) – mass of the object</p></li>
+<li><p><strong>x1</strong> (<em>numpy.array</em>) – position of object in cartesian coordinates</p></li>
+<li><p><strong>v1</strong> (<em>numpy.array</em>) – velocity of object in cartesian coordinates</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – mass of primary object</p></li>
+<li><p><strong>m1</strong> (<em>float</em>) – mass of object</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>orbital elements of the object</p>
+<dd class="field-even"><p>orbital elements of object</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
@@ -168,18 +174,18 @@ velocities (numpy.array): orbital velocities of the objects</p>
 <dl class="py function">
 <dt id="NOrbit.kepToCart">
 <code class="sig-prename descclassname">NOrbit.</code><code class="sig-name descname">kepToCart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">kepler</span></em>, <em class="sig-param"><span class="n">m0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#NOrbit.kepToCart" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function transforms an objects kepler coordinates to cartesian coordinates</p>
+<dd><p>This function transforms an objects kepler coordinates to cartesian coordinates provided by Max Zimmermann</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>kepler</strong> (<em>numpy.array</em>) – orbital elements of the object</p></li>
-<li><p><strong>m0</strong> (<em>float</em>) – mass of the star</p></li>
+<li><p><strong>kepler</strong> (<em>numpy.array</em>) – orbital elements and mass of object</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – mass of primary object</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>pos (numpy.array): transformed cartesian position of the object
-vel (numpy.array): transformed cartesian velocity of the object</p>
+<dt>tuple containing:</dt><dd><p>pos (numpy.array): transformed cartesian position of object
+vel (numpy.array): transformed cartesian velocity of object</p>
 </dd>
 </dl>
 </p>
@@ -197,15 +203,15 @@ vel (numpy.array): transformed cartesian velocity of the object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of the objects</p></li>
-<li><p><strong>velocities</strong> (<em>numpy.array</em>) – velocities of the objects</p></li>
-<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
+<li><p><strong>positions</strong> (<em>numpy.array</em>) – positions of objects</p></li>
+<li><p><strong>velocities</strong> (<em>numpy.array</em>) – velocities of objects</p></li>
+<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of objects</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>positions (numpy.array): barycenter corrected positions of the objects
-velocities (numpy.array): barycenter corrected velocities of the objects</p>
+<dt>tuple containing:</dt><dd><p>positions (numpy.array): barycenter corrected positions of objects
+velocities (numpy.array): barycenter corrected velocities of objects</p>
 </dd>
 </dl>
 </p>
@@ -223,17 +229,17 @@ velocities (numpy.array): barycenter corrected velocities of the objects</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>time_step</strong> (<em>float</em>) – time-step of the integration</p></li>
-<li><p><strong>num_steps</strong> (<em>int</em>) – number of steps of the integration</p></li>
-<li><p><strong>initial_positions</strong> (<em>numpy.array</em>) – initial positions of the objects</p></li>
-<li><p><strong>initial_velocities</strong> (<em>numpy.array</em>) – initial velocities of the objects</p></li>
-<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of the objects</p></li>
+<li><p><strong>time_step</strong> (<em>float</em>) – time-step of integration</p></li>
+<li><p><strong>num_steps</strong> (<em>int</em>) – number of steps of integration</p></li>
+<li><p><strong>initial_positions</strong> (<em>numpy.array</em>) – initial positions of objects</p></li>
+<li><p><strong>initial_velocities</strong> (<em>numpy.array</em>) – initial velocities of objects</p></li>
+<li><p><strong>masses</strong> (<em>numpy.array</em>) – masses of objects</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>positions (numpy.array): positions of the objects after the integration
-velocities (numpy.array): velocities of the objects after the integration</p>
+<dt>tuple containing:</dt><dd><p>positions (numpy.array): positions of objects after integration
+velocities (numpy.array): velocities of objects after integration</p>
 </dd>
 </dl>
 </p>
