@@ -7,13 +7,13 @@ def kepToCart(kepler, m0):
     This function transforms an objects kepler coordinates to cartesian coordinates provided by Max Zimmermann
     
     Args:
-        kepler (numpy.array): orbital elements of the object
-        m0 (float): mass of the star
+        kepler (numpy.array): orbital elements and mass of object
+        m0 (float): mass of primary object
     
     Returns:
         (tuple): tuple containing:
-            pos (numpy.array): transformed cartesian position of the object
-            vel (numpy.array): transformed cartesian velocity of the object
+            pos (numpy.array): transformed cartesian position of object
+            vel (numpy.array): transformed cartesian velocity of object
     """
 
     k2 = np.square(0.01720209895)
@@ -58,13 +58,13 @@ def cartToKep(x1,v1,m0,m1):
     This function transforms an objects cartesian coordinates to kepler coordinates provided by Max Zimmermann
     
     Args:
-        x1 (numpy.array): position of the object in cartesian coordinates
-        v1 (numpy.array): velocity of the object in cartesian coordinates
-        m0 (float): mass of the star
-        m1 (float): mass of the object
+        x1 (numpy.array): position of object in cartesian coordinates
+        v1 (numpy.array): velocity of object in cartesian coordinates
+        m0 (float): mass of primary object
+        m1 (float): mass of object
     
     Returns:
-        numpy.array: orbital elements of the object
+        numpy.array: orbital elements of object
     """
 
     k2 = np.square(k)
@@ -195,11 +195,11 @@ def calculate_acceleration(positions, masses):
     This function calculates the accelerations of the objects involved in the N-body problem
     
     Args:
-        positions (numpy.array): positions of the objects
-        masses (numpy.array): masses of the objects
+        positions (numpy.array): positions of objects
+        masses (numpy.array): masses of objects
     
     Returns:
-        numpy.array: accelerations of the objects
+        numpy.array: accelerations of objects
     """
     k = 0.01720209895
     G = k * k
@@ -217,11 +217,11 @@ def calculate_derivatives(state, masses):
     This function calculates the derivative quantities of the objects involved in the N-body problem
     
     Args:
-        state (numpy.array): states of the objects (positions, velocities)
-        masses (numpy.array): masses of the objects
+        state (numpy.array): states of objects (positions, velocities)
+        masses (numpy.array): masses of objects
     
     Returns:
-        numpy.array: derivative quantities of the objects
+        numpy.array: derivative quantities of objects
     """
     num_bodies = len(masses)
     positions = state[:num_bodies]
@@ -234,14 +234,14 @@ def move_to_barycenter(positions, velocities, masses):
     This function corrects the positions of the objects involved in the N-body problem to barycenter positions
     
     Args:
-        positions (numpy.array): positions of the objects
-        velocities (numpy.array): velocities of the objects
-        masses (numpy.array): masses of the objects
+        positions (numpy.array): positions of objects
+        velocities (numpy.array): velocities of objects
+        masses (numpy.array): masses of objects
     
     Returns:
         (tuple): tuple containing:
-            positions (numpy.array): barycenter corrected positions of the objects
-            velocities (numpy.array): barycenter corrected velocities of the objects
+            positions (numpy.array): barycenter corrected positions of objects
+            velocities (numpy.array): barycenter corrected velocities of objects
     """
     total_mass = np.sum(masses)
     barycenter = np.sum(positions * masses[:, np.newaxis], axis = 0)/total_mass
@@ -254,16 +254,16 @@ def rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, mass
     This function calculates the Runge-Kutta 4th order scheme of the objects involved in the N-body problem
     
     Args:
-        time_step (float): time-step of the integration
-        num_steps (int): number of steps of the integration
-        initial_positions (numpy.array): initial positions of the objects
-        initial_velocities (numpy.array): initial velocities of the objects
-        masses (numpy.array): masses of the objects
+        time_step (float): time-step of integration
+        num_steps (int): number of steps of integration
+        initial_positions (numpy.array): initial positions of objects
+        initial_velocities (numpy.array): initial velocities of objects
+        masses (numpy.array): masses of objects
     
     Returns:
         (tuple): tuple containing:
-            positions (numpy.array): positions of the objects after the integration
-            velocities (numpy.array): velocities of the objects after the integration
+            positions (numpy.array): positions of objects after integration
+            velocities (numpy.array): velocities of objects after integration
     """
     num_bodies = len(masses)
     state = np.zeros((num_steps + 1, 2 * num_bodies, 3))
@@ -289,56 +289,56 @@ def rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, mass
 
 class NOrbit(BaseModel):
     """
-    Class for keeping track of NOrbit functions
+    Class that keeps track of NOrbit functions
     """
-    planet_elements: list
-    m_star: float
+    object_elements: list
+    m_primary: float
 
     def orbit(self, dt: float, n_orbits: int) -> tuple:
         """
         This function calculates the orbit of the objects involved in the N-body problem
     
         Args:
-            planet_elements (numpy.array): planetary elements
-            m_star (float): mass of the star
-            dt (float): time-step of the integration
-            n_orbits (int): number of first planet orbits around the star
+            object_elements (numpy.array): orbital elements and mass of objects (e.g. planets)
+            m_primary (float): mass of primary object (e.g. star) in solar masses
+            dt (float): time-step of integration
+            n_orbits (int): number of total orbits of first object around primary object
     
         Returns:
             (tuple): tuple containing:
-                positions (numpy.array): orbital positions of the objects
-                velocities (numpy.array): orbital velocities of the objects
+                positions (numpy.array): orbital positions of objects
+                velocities (numpy.array): orbital velocities of objects
         """
         
         k = 0.01720209895
         G = k * k
 
         # Kepler
-        star = np.array((0, 0, 0, 0, 0, 0, self.m_star))
-        n_planets = len(self.planet_elements)
+        primary = np.array((0, 0, 0, 0, 0, 0, self.m_primary))
+        n_objects = len(self.object_elements)
 
         positions = [np.array([0, 0, 0])]
         velocities = [np.array([0, 0, 0])]
-        mass = [self.m_star]
+        mass = [self.m_primary]
 
         # Cartesian
-        for i in range(0, n_planets):
-            pos = kepToCart(self.planet_elements[i][0], self.m_star)[0]
-            vel = kepToCart(self.planet_elements[i][0], self.m_star)[1]
+        for i in range(0, n_objects):
+            pos = kepToCart(self.object_elements[i][0], self.m_primary)[0]
+            vel = kepToCart(self.object_elements[i][0], self.m_primary)[1]
 
             positions.append(pos)
             velocities.append(vel)
-            mass.append(self.planet_elements[i][0][-1])
+            mass.append(self.object_elements[i][0][-1])
 
-        # Set initial positions and velocities for the Sun and Planets
+        # Set initial positions and velocities for the Sun and objects
         initial_positions =  np.array(positions)
         initial_velocities = np.array(velocities)
         masses = np.array(mass)
 
         # calculate the number of steps of one single orbit
-        a_planet = self.planet_elements[0][0][0]
-        M_planet = self.planet_elements[0][0][-1]
-        T = 2 * np.pi * np.sqrt(a_planet**3/G * (self.m_star + M_planet))
+        a_object = self.object_elements[0][0][0]
+        M_object = self.object_elements[0][0][-1]
+        T = 2 * np.pi * np.sqrt(a_object**3/G * (self.m_primary + M_object))
         time_step = T * dt  # time step
         num_steps = int(n_orbits/dt)
 
@@ -349,7 +349,7 @@ class NOrbit(BaseModel):
 
 class Object():
     """
-    Class that makes planets of the solar system available for simple import
+    Class that makes objects of the solar system available for simple import
     """
     mercury = [np.array((0.3871, 0.2056, 7.0049, 48.3317, 77.4565, 252.2508, 1.659e-7))]
     venus = [np.array((0.7233, 0.0068, 3.3947, 76.6807, 131.5330, 181.9797, 2.447e-6))]
