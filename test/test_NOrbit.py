@@ -6,7 +6,6 @@ import numpy as np
 import NOrbit
 import pytest
 
-
 def test_kepToCart():
     planet_elements = np.array((1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-5))
     mass_star = 1.0
@@ -127,7 +126,7 @@ def test_orbit():
     dt = 0.5
     n_orbits = 1
     
-    result = NOrbit.NOrbit(planet_elements = planet_elements, m_star = m_star).orbit(dt = dt, n_orbits = n_orbits)
+    result = NOrbit.NOrbit(object_elements = planet_elements, m_primary = m_star).orbit(dt = dt, n_orbits = n_orbits)
     
     pos = np.array([[[4.24986205e-03, -2.16147702e-03, -7.22871314e-05],
                           [-9.69141616e-01, -2.45313757e-01, -7.05363499e-05],
