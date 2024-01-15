@@ -25,10 +25,7 @@ git push origin new-branch \
 git checkout branch-name
 
 ## To-Do
-check html \
 check if works directly from PyPi
-
-Pull requests! 
 
 ### Update PyPi 
  - Delete all files in the dist folder
