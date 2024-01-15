@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to NOrbit’s documentation! &mdash; NOrbit 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Welcome to NOrbit’s documentation! &mdash; NOrbit 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -38,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a></li>
 </ul>
@@ -67,23 +70,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="welcome-to-norbit-s-documentation">
-<h1>Welcome to NOrbit’s documentation!<a class="headerlink" href="#welcome-to-norbit-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="welcome-to-norbit-s-documentation">
+<h1>Welcome to NOrbit’s documentation!<a class="headerlink" href="#welcome-to-norbit-s-documentation" title="Link to this heading"></a></h1>
+<p>NOrbit is an N-body Integrator that uses the Runge-Kutta 4th Order method to calculate the gravitational interactions of multiple objects and plots their orbit evolution through time.
+Who is this for?</p>
+<section id="who-is-it-for">
+<h2>Who is it for?<a class="headerlink" href="#who-is-it-for" title="Link to this heading"></a></h2>
+<p>Astronomers that need a visualization of multiple object interactions. It is also recommended to astronomy students that got into numerical methods, since N-body integrators are essential for many astronomical simulations.</p>
+<p>Additionally, NOrbit is a god tool for checking the stability of a planetary system over a given amount of time.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.NOrbit"><code class="docutils literal notranslate"><span class="pre">NOrbit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.Object"><code class="docutils literal notranslate"><span class="pre">Object</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.calculate_acceleration"><code class="docutils literal notranslate"><span class="pre">calculate_acceleration()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.calculate_derivatives"><code class="docutils literal notranslate"><span class="pre">calculate_derivatives()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.cartToKep"><code class="docutils literal notranslate"><span class="pre">cartToKep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.kepToCart"><code class="docutils literal notranslate"><span class="pre">kepToCart()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.move_to_barycenter"><code class="docutils literal notranslate"><span class="pre">move_to_barycenter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.rk4_n_body"><code class="docutils literal notranslate"><span class="pre">rk4_n_body()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>
