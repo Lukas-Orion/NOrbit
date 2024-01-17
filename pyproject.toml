@@ -12,6 +12,7 @@ authors = [
 requires-python = ">= 3.8"
 dependencies = [
     "numpy >=1.23",
+    "pydantic",
 ]
 description = "A package for N-body integration using the Runge-Kutta 4th Order Method"
 readme = "README.md"
