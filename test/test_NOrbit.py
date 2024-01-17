@@ -18,13 +18,33 @@ def test_kepToCart():
     assert pytest.approx(result[1], 0.1) == vel
 
 def test_cartToKep():
-    positions = np.array((1.0, 1.0, 0.0))
-    velocities = np.array((0.1, 0.1, 0.0))
+    positions_1 = np.array((1.0, 1.0, 0.0))
+    velocities_1 = np.array((0.1, 0.1, 0.0))
+    positions_2 = np.array((-1.0, -1.0, 0.0))
+    velocities_2 = np.array((0.1, 0.1, 0.0))
+    positions_3 = np.array((1.0, 0.0, 0.0))
+    velocities_3 = np.array((0.0, 0.017202184960279726, 0.0))
+    positions_4 = np.array((1.0, 0.0, 0.0))
+    velocities_4 = np.array((0.0, 0.017199564984189623, 0.0003002195235361275))
+    positions_5 = np.array((0.9, 0.0, 0.0))
+    velocities_5 = np.array((0.0, 0.019017731029180855, 0.0))
+    positions_6 = np.array((1.0, 0.0, 1.0))
+    velocities_6 = np.array((0.0, 0.017202184960279726, 0.0))
     mass_planet = 1e-5
     mass_star = 1.0
 
-    result = NOrbit.cartToKep(positions, velocities, mass_star, mass_planet)
-    assert pytest.approx(result, 0.1) == (0.0, 1.0, 0.0, 225.0, 0, 180.0, 1e-05)
+    result_1 = NOrbit.cartToKep(positions_1, velocities_1, mass_star, mass_planet)
+    result_2 = NOrbit.cartToKep(positions_2, velocities_2, mass_star, mass_planet)
+    result_3 = NOrbit.cartToKep(positions_3, velocities_3, mass_star, mass_planet)
+    result_4 = NOrbit.cartToKep(positions_4, velocities_4, mass_star, mass_planet)
+    result_5 = NOrbit.cartToKep(positions_5, velocities_5, mass_star, mass_planet)
+    result_6 = NOrbit.cartToKep(positions_6, velocities_6, mass_star, mass_planet)
+    assert pytest.approx(result_1, 0.1) == (0.0, 1.0, 0.0, 225.0, 0.0, 180.0, 1e-05)
+    assert pytest.approx(result_2, 0.1) == (0.0, 1.0, 0.0, 45.0, 0.0, 180, 1e-05)
+    assert pytest.approx(result_3, 0.1) == (1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-05)
+    assert pytest.approx(result_4, 0.1) == (1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1e-05)
+    assert pytest.approx(result_5, 0.1) == (1.0, 0.1, 0.0, 0.0, 0.0, 0.0, 1e-05)
+    assert pytest.approx(result_6, 0.1) == (2.41, 0.41, 45.0, 90.0, 270.0, 0.0, 1e-05)
 
 def test_calculate_acceleration():
     positions = np.array([[ 4.24986205e-03, -2.16147702e-03, -7.22871314e-05],

@@ -94,7 +94,7 @@ def cartToKep(x1,v1,m0,m1):
 
     e = np.linalg.norm(lrl)
 
-    if(e < 1e-13):
+    if(e < 1e-11):
         e = 0
         e2 = 0
         om = 0
@@ -108,7 +108,7 @@ def cartToKep(x1,v1,m0,m1):
     node[2] = 0
     nscal = np.linalg.norm(node)
 
-    if(inc < 1e-13):
+    if(inc < 1e-11):
         oM = 0
         om = np.arccos(lrl[0]/np.linalg.norm(lrl))
         if(lrl[1] < 0):
@@ -122,13 +122,13 @@ def cartToKep(x1,v1,m0,m1):
         if(om < 0):
             om = om + 360
 
-    if(e < 1.2e-13 and inc <= 1e-13):
+    if(e < 1e-11 and inc <= 1e-11):
         oM = 0
         om = 0
         mmm = np.arctan2(r[1],r[0]) * igrad
         if (mmm < 0):
             mmm = mmm + 360
-    elif (e < 1.2e-13 and inc > 1e-13):
+    elif (e < 1e-11 and inc > 1e-11):
         h = np.cross(l,node)
         hnorm = np.linalg.norm(h)
         for j in range(len(node)):
@@ -141,7 +141,7 @@ def cartToKep(x1,v1,m0,m1):
         mmm = tAn * igrad
         if (mmm < 0):
             mmm = mmm + 360
-    elif(inc < 1e-13 and e > 1e-13):
+    elif(inc < 1e-11 and e > 1e-11):
         h = np.cross(l,lrl)
         hnorm = np.linalg.norm(h)
         tAn = np.arctan2(np.dot(h,r) * e, np.dot(lrl,r) * hnorm)
@@ -290,6 +290,10 @@ def rk4_n_body(time_step, num_steps, initial_positions, initial_velocities, mass
 class NOrbit(BaseModel):
     """
     Class that keeps track of NOrbit functions
+    
+    Attributes:
+        object_elements (numpy.array): orbital elements and mass of objects (e.g. planets)
+        m_primary (float): mass of primary object (e.g. star) in solar masses
     """
     object_elements: list
     m_primary: float
@@ -299,8 +303,6 @@ class NOrbit(BaseModel):
         This function calculates the orbit of the objects involved in the N-body problem
     
         Args:
-            object_elements (numpy.array): orbital elements and mass of objects (e.g. planets)
-            m_primary (float): mass of primary object (e.g. star) in solar masses
             dt (float): time-step of integration
             n_orbits (int): number of total orbits of first object around primary object
     
