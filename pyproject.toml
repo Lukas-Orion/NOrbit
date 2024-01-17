@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NOrbit"
-version = "0.0.1"
+dynamic = ["version"]
 authors = [
     {name = "Lukas Orion", email = "a11919257@unet.univie.ac.at"},
     {name = "Jim Buisman", email = "a01625563@unet.univie.ac.at"}
 ]
 requires-python = ">= 3.8"
 dependencies = [
-    "numpy >=1.23"
+    "numpy >=1.23",
 ]
 description = "A package for N-body integration using the Runge-Kutta 4th Order Method"
 readme = "README.md"
