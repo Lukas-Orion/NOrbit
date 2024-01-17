@@ -1,6 +1,6 @@
 # This workflow will install Python dependencies and run test coverage
 
-name: Python package
+name: Coverage
 
 on:
   push:
