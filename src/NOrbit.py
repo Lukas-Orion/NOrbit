@@ -119,15 +119,15 @@ def cartToKep(x1,v1,m0,m1):
         h = np.cross(l,node)
         hnorm = np.linalg.norm(h)
         om = np.arctan2(np.dot(lrl,h) * nscal, np.dot(lrl,node) * hnorm) * igrad
-        if(om < 0):
-            om = om + 360
+        #if(om < 0):
+            #om = om + 360
 
     if(e < 1e-11 and inc <= 1e-11):
         oM = 0
         om = 0
         mmm = np.arctan2(r[1],r[0]) * igrad
-        if (mmm < 0):
-            mmm = mmm + 360
+        #if (mmm < 0):
+            #mmm = mmm + 360
     elif (e < 1e-11 and inc > 1e-11):
         h = np.cross(l,node)
         hnorm = np.linalg.norm(h)
@@ -139,8 +139,8 @@ def cartToKep(x1,v1,m0,m1):
         ru = np.linalg.solve(u,r)
         tAn = np.arctan2(ru[1],ru[0])
         mmm = tAn * igrad
-        if (mmm < 0):
-            mmm = mmm + 360
+        #if (mmm < 0):
+            #mmm = mmm + 360
     elif(inc < 1e-11 and e > 1e-11):
         h = np.cross(l,lrl)
         hnorm = np.linalg.norm(h)
@@ -150,8 +150,8 @@ def cartToKep(x1,v1,m0,m1):
         eanom = np.arctan2(sinen,cosen)
 
         mmm = (eanom - e * sinen) * igrad
-        if(mmm<0):
-            mmm = mmm + 360
+        #if(mmm<0):
+            #mmm = mmm + 360
     else:
 
         h = np.cross(l,lrl)
@@ -168,16 +168,16 @@ def cartToKep(x1,v1,m0,m1):
         eanom = np.arctan2(sinen, cosen)
 
         mmm = (eanom - e * sinen) * igrad
-        if(mmm < 0):
-            mmm = mmm + 360
+        #if(mmm < 0):
+            #mmm = mmm + 360
 
-    if (om >= 360):
-        om = om - 360
-    if (oM >= 360):
-        oM = oM - 360
+    #if (om >= 360):
+        #om = om - 360
+    #if (oM >= 360):
+        #oM = oM - 360
 
-    if (mmm >= 360):
-        mmm = mmm - 360
+    #if (mmm >= 360):
+        #mmm = mmm - 360
             
     #kepler[0] = a
     #kepler[1] = e
