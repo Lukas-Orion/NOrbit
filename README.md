@@ -18,7 +18,7 @@ pip install NOrbit[plot]
 Here's an example of how to use the NOrbit package:
 ```python
 import numpy as np
-from src.NOrbit import NOrbit, Object
+from NOrbit import NOrbit, Object
 ```
 
 ```python
