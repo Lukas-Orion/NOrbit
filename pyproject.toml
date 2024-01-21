@@ -19,8 +19,7 @@ readme = "README.md"
 license = {file = "LICENSE"}
 
 [project.optional-dependencies]
-gui = ["3Dplot"]
-cli = [
+plot = [
   "matplotlib.pyplot",
   "mpl_toolkits.mplot3d",
 ]
