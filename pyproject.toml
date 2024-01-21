@@ -2,9 +2,6 @@
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.dynamic]
-version = {attr = "NOrbit.__version__"}
-
 [project]
 name = "NOrbit"
 dynamic = ["version"]
@@ -30,3 +27,6 @@ plot = [
 Homepage = "https://github.com/Lukas-Orion/NOrbit"
 Repository = "https://github.com/Lukas-Orion/NOrbit"
 "Bug Tracker" = "https://github.com/Lukas-Orion/NOrbit/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "NOrbit.__version__"}
