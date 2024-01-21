@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NOrbit"
-version = "1.0.1"
+version = "1.0.2"
 authors = [
     {name = "Lukas Orion", email = "a11919257@unet.univie.ac.at"},
     {name = "Jim Buisman", email = "a01625563@unet.univie.ac.at"}
