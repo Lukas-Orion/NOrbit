@@ -21,7 +21,6 @@ license = {file = "LICENSE"}
 [project.optional-dependencies]
 plot = [
   "matplotlib.pyplot",
-  "mpl_toolkits.mplot3d",
 ]
 
 [project.urls]
