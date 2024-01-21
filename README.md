@@ -22,19 +22,18 @@ from src.NOrbit import NOrbit, Object
 ```
 
 ```python
-planets_solar_system = Object.planets_solar_system # list of orbital elements and masses of solar system planets
-ss_names = Object.planets_solar_system_names # names of solar system planets
+planets_inner_solar_system = Object.planets_inner_solar_system # list of orbital elements and masses of inner solar system planets
 
 m_sun = 1.0 # mass of sun in solar masses
 
-solar_system = NOrbit(object_elements = planets_solar_system, m_primary = m_sun) # base model of solar system
+solar_system = NOrbit(object_elements = planets_inner_solar_system, m_primary = m_sun) # base model of solar system
 ```
 
 ```python
 dt = 1/100 # time-step of integration
-n_orbits = 1000 # number of orbits of first planet (Merkury) around Sun
+n_orbits = 100 # number of orbits of first planet (Merkury) around Sun
 
-solar_system_positions = solar_system.orbit(dt = dt, n_orbits = n_orbits)[0] # orbital position calculations for planets and Sun
+inner_solar_system_positions = solar_system.orbit(dt = dt, n_orbits = n_orbits)[0] # orbital position calculations for inner planets and Sun
 ```
 For a more detailed example, please check the Example Notebook (`NOrbit example.ipynb`)
 
