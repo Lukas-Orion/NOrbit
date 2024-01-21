@@ -2,6 +2,9 @@
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.dynamic]
+version = {attr = "NOrbit.__version__"}
+
 [project]
 name = "NOrbit"
 dynamic = ["version"]
@@ -20,8 +23,7 @@ license = {file = "LICENSE"}
 
 [project.optional-dependencies]
 plot = [
-  "matplotlib.pyplot",
-  "mpl_toolkits.mplot3d",
+  "matplotlib",
 ]
 
 [project.urls]
