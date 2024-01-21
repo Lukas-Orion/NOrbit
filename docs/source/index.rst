@@ -31,7 +31,7 @@ Here's an example of how to use the NOrbit package:
 .. code-block:: python
 
     import numpy as np
-    from src.NOrbit import NOrbit, Object
+    from NOrbit import NOrbit, Object
 
     planets_inner_solar_system = Object.planets_inner_solar_system  # list of orbital elements and masses of inner solar system planets
     m_sun = 1.0  # mass of sun in solar masses
