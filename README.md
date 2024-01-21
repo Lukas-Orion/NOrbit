@@ -36,7 +36,7 @@ n_orbits = 1000 # number of orbits of first planet (Merkury) around Sun
 
 solar_system_positions = solar_system.orbit(dt = dt, n_orbits = n_orbits)[0] # orbital position calculations for planets and Sun
 ```
-For a more detailed example, please check the Example Notebook ('NOrbit example.ipynb')
+For a more detailed example, please check the Example Notebook (`NOrbit example.ipynb`)
 
 ## Objects
     Object.mercury
@@ -55,3 +55,10 @@ For a more detailed example, please check the Example Notebook ('NOrbit example.
     Object.planets_inner_solar_system_names
     Object.planets_outer_solar_system
     Object.planets_outer_solar_system_names
+
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
