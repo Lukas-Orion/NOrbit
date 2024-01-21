@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to NOrbit’s documentation! &mdash; NOrbit 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>NOrbit &mdash; NOrbit 1.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=292eb321"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -38,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a></li>
 </ul>
@@ -57,7 +60,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to NOrbit’s documentation!</li>
+      <li class="breadcrumb-item active">NOrbit</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -67,30 +70,92 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="welcome-to-norbit-s-documentation">
-<h1>Welcome to NOrbit’s documentation!<a class="headerlink" href="#welcome-to-norbit-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>NOrbit is an N-body Integrator that uses the Runge-Kutta 4th Order method to calculate the gravitational interactions of multiple objects and plots their orbit evolution through time.
-Who is this for?</p>
-<div class="section" id="who-is-it-for">
-<h2>Who is it for?<a class="headerlink" href="#who-is-it-for" title="Permalink to this headline">¶</a></h2>
-<p>Astronomers that need a visualization of multiple object interactions. It is also recommended to astronomy students that got into numerical methods, since N-body integrators are essential for many astronomical simulations.</p>
-<p>Additionally, NOrbit is a god tool for checking the stability of a planetary system over a given amount of time.</p>
+  <section id="norbit">
+<h1>NOrbit<a class="headerlink" href="#norbit" title="Link to this heading"></a></h1>
+<p>NOrbit is a Python package designed for simulating the N-body problem using a Runge-Kutta 4th order integration scheme. The code provides functions for converting between Keplerian and Cartesian coordinates, calculating accelerations, calculating derivatives, and simulating the orbits of objects in an N-body system.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Clone the repository and install the required dependencies using the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>NOrbit
+</pre></div>
+</div>
+<p>or with plotting dependencies:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>NOrbit<span class="o">[</span>plot<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Here’s an example of how to use the NOrbit package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">src.NOrbit</span> <span class="kn">import</span> <span class="n">NOrbit</span><span class="p">,</span> <span class="n">Object</span>
+
+<span class="n">planets_inner_solar_system</span> <span class="o">=</span> <span class="n">Object</span><span class="o">.</span><span class="n">planets_inner_solar_system</span>  <span class="c1"># list of orbital elements and masses of inner solar system planets</span>
+<span class="n">m_sun</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># mass of sun in solar masses</span>
+
+<span class="n">solar_system</span> <span class="o">=</span> <span class="n">NOrbit</span><span class="p">(</span><span class="n">object_elements</span><span class="o">=</span><span class="n">planets_inner_solar_system</span><span class="p">,</span> <span class="n">m_primary</span><span class="o">=</span><span class="n">m_sun</span><span class="p">)</span>  <span class="c1"># base model of the solar system</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span>  <span class="c1"># time-step of integration</span>
+<span class="n">n_orbits</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of orbits of the first planet (Mercury) around the Sun</span>
+
+<span class="n">inner_solar_system_positions</span> <span class="o">=</span> <span class="n">solar_system</span><span class="o">.</span><span class="n">orbit</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">n_orbits</span><span class="o">=</span><span class="n">n_orbits</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># orbital position calculations for inner planets and Sun</span>
+</pre></div>
+</div>
+<p>For a more detailed example, please check the Example Notebook (<cite>NOrbit example.ipynb</cite>).</p>
+</section>
+<section id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.mercury</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.venus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.earth</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.mars</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.jupiter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.saturn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.uranus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.neptune</span></code></p></li>
+</ul>
+</section>
+<section id="grouped-objects">
+<h2>Grouped Objects<a class="headerlink" href="#grouped-objects" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_solar_system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_solar_system_names</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_inner_solar_system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_inner_solar_system_names</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_outer_solar_system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Object.planets_outer_solar_system_names</span></code></p></li>
+</ul>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>Distributed under the MIT License. See <cite>LICENSE</cite> for more information.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NOrbit.html">NOrbit Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.NOrbit"><code class="docutils literal notranslate"><span class="pre">NOrbit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.Object"><code class="docutils literal notranslate"><span class="pre">Object</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.calculate_acceleration"><code class="docutils literal notranslate"><span class="pre">calculate_acceleration()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.calculate_derivatives"><code class="docutils literal notranslate"><span class="pre">calculate_derivatives()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.cartToKep"><code class="docutils literal notranslate"><span class="pre">cartToKep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.kepToCart"><code class="docutils literal notranslate"><span class="pre">kepToCart()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.move_to_barycenter"><code class="docutils literal notranslate"><span class="pre">move_to_barycenter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="NOrbit.html#NOrbit.rk4_n_body"><code class="docutils literal notranslate"><span class="pre">rk4_n_body()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>

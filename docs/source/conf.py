@@ -22,8 +22,7 @@ copyright = '2023, Lukas Orion & Jim Buisman'
 author = 'Lukas Orion & Jim Buisman'
 
 # The full version, including alpha/beta/rc tags
-from NOrbit import __version__
-release = __version__
+release = '1.0.1'
 
 
 # -- General configuration ---------------------------------------------------
