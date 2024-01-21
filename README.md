@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/Lukas-Orion/NOrbit/graph/badge.svg?token=ZR0LVVUXDU)](https://codecov.io/gh/Lukas-Orion/NOrbit)
 # NOrbit
 N-body integrator
 
