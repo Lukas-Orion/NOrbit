@@ -20,7 +20,7 @@ license = {file = "LICENSE"}
 
 [project.optional-dependencies]
 plot = [
-  "matplotlib.pyplot",
+  "matplotlib",
 ]
 
 [project.urls]
